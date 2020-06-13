@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="messagesesTable"
+        messagesPack="org.screen.web.screens.messages">
+    <data readOnly="true">
+        <collection id="messagesesDc"
+                    class="org.screen.entity.Messages"
+                    view="_local">
+            <loader id="messagesesDl">
+                <query>
+                    <![CDATA[select e from dispatcher_Messages e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="messagesesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="messagesesTable"
+                dataLoader="messagesesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="messagesesTable"
+                    width="100%"
+                    dataContainer="messagesesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="temperature"/>
+                <column id="number"/>
+                <column id="isSmoke"/>
+                <column id="smokeTier"/>
+                <column id="isBackDoor"/>
+                <column id="messagesStatus"/>
+                <column id="season"/>
+                <column id="isWork"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="messagesesTable.create"/>
+                <button id="editBtn" action="messagesesTable.edit"/>
+                <button id="removeBtn" action="messagesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

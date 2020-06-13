@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="org.screen.web.screens.messages">
+    <data>
+        <instance id="messagesDc"
+                  class="org.screen.entity.Messages"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="messagesDc">
+            <column width="250px">
+                <textField id="temperatureField" property="temperature"/>
+                <textField id="numberField" property="number"/>
+                <checkBox id="isSmokeField" property="isSmoke"/>
+                <textField id="smokeTierField" property="smokeTier"/>
+                <checkBox id="isBackDoorField" property="isBackDoor"/>
+                <lookupField id="messagesStatusField" property="messagesStatus"/>
+                <lookupField id="seasonField" property="season"/>
+                <checkBox id="isWorkField" property="isWork"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
